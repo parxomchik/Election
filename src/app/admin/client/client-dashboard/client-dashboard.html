@@ -1,0 +1,71 @@
+<client-navbar></client-navbar>
+
+<div class="container-fluid" id="dashboard_content">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+            <client-sidebar></client-sidebar>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <div class="col-md-12 padding_fix">
+                <div class="col-md-2 padding_fix">
+                    <h1 class="page-header">Dashboard</h1>
+                </div>
+                <div id="market_select" class="col-md-7" >
+                    <select class="form-control" ng-model="market.choose" ng-init="market.choose = '00'">
+                        <!--ng-selected="{{operator.value == filterCondition.operator}}"-->
+                        <option ng-click=""  ng-repeat="market in dashboard.markets" value="{{market.code}}">{{market.title}}</option>
+                    </select>
+                    <!--<pre>-->
+                        <!--{{market.choose}}-->
+                    <!--</pre>-->
+
+                </div>
+                <div class="col-md-2 col-md-offset-1" id="company_btn">
+                    <div class="btn-group pull-right">
+                        <label class="btn btn-primary" ng-model="dashboard.radioModel" btn-radio="'ep'" ui-sref="dashboardEP">Епицентр</label>
+                        <label class="btn btn-primary" ng-model="dashboard.radioModel" btn-radio="'nl'" ui-sref="dashboardNL">Новая линия</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row placeholders">
+                <div class="col-md-6">
+                    <highchart id="chart1" config="highchartsNG1" class="span10"></highchart>
+                    <!--<highchart  config="highchartsNG" class="marginTop20"></highchart>-->
+                </div>
+                <div class="col-md-6">
+                    <highchart  config="highchartsNG2" class="marginTop20"></highchart>
+                </div>
+            </div>
+
+            <h2 class="sub-header">Мониторинг ошибок</h2>
+            <!--<pre>-->
+                <!--&lt;!&ndash;{{dashboard.markets}}&ndash;&gt;-->
+                <!--{{dashboard.plots1}}-->
+
+            <!--</pre>-->
+            <div class="table-responsive ">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Источник</th>
+                        <th>Тип ошибки</th>
+                        <th>Описание</th>
+                        <th>Влияние</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="alert in dashboard.alerts">
+                        <td>{{alert.number}}</td>
+                        <td>{{alert.source}}</td>
+                        <td>{{alert.error_type}}</td>
+                        <td>{{alert.description}}</td>
+                        <td>{{alert.importance}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

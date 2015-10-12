@@ -1,0 +1,33 @@
+//#client_navbar {
+//  position: fixed;
+//  top: 0;
+//  bottom: 0;
+//  left: 0;
+//  z-index: 1000;
+//  display: block;
+//  overflow-x: hidden;
+//  overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+//  border-right: 1px solid #eee;
+//}
+#login_navbar {
+  color: #fff;
+}
+#login_navbar:hover {
+  color: #fff;
+}
+#logo {
+  color: #fff;
+  padding-left: 30px;
+  font-size: 2.3em;
+}
+#logo:before{
+  display: block;
+  float: left;
+  content: '';
+  background: url(../assets/images/login/client_logo.png) no-repeat;
+  width: 2.5em;
+  height: 1.5em;
+  margin-right: -0.9em;
+  margin-top: -10px;
+
+}

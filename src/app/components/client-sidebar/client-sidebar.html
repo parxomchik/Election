@@ -1,0 +1,8 @@
+    <ul class="nav nav-sidebar">
+        <li role="presentation" ng-class="{ active: vm.isActive('/client/dashboard/ep') || vm.isActive('/client/dashboard/nl')}"><a ng-href="/client/dashboard/ep'"  ui-sref="dashboardEP">Dashboard</a></li>
+        <li role="presentation" ng-class="{ active: vm.isActive('/client/replication/ep') || vm.isActive('/client/replication/nl')}"><a ng-href="/client/replication/ep"  ui-sref="replicationEP">Репликации</a></li>
+        <li role="presentation" ng-class="{ active: vm.isActive('/client/queue/ep') || vm.isActive('/client/queue/nl')}"><a ng-href="/client/queue/ep"  ui-sref="queueEP">Очередь доккументов</a></li>
+        <li role="presentation" ng-class="{ active: vm.isActive('/client/otrs/ep') || vm.isActive('/client/otrs/nl')}"><a ng-href="/client/otrs/ep" ui-sref="otrsEP">OTRS</a></li>
+        <li role="presentation" ng-class="{ active: vm.isActive('/client/notifications/ep') || vm.isActive('/client/notifications/nl')}"><a ng-href="/client/notifications/ep"  ui-sref="notificationsEP">Оповещения</a></li>
+    </ul>
+

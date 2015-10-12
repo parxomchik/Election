@@ -1,0 +1,18 @@
+<nav class="navbar navbar-static-top navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">
+        <span class="glyphicon glyphicon-home"></span> Gulp Angular
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
+      <ul class="nav navbar-nav">
+        <li ng-class="{ active: isActive('/')}"><a ng-href="#" ui-sref="home">Home</a></li>
+        <li ng-class="{ active: isActive('/profile')}"><a  ng-href="#" ui-sref="profile">Clientpage</a></li>
+        <li ng-class="{ active: isActive('/brandbook')}"><a  ng-href="#" ui-sref="brandbook" >Brandbook</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
