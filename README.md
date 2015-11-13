@@ -3,8 +3,7 @@ Quic start
 
 npm start 
 
-
-prodject url
+Project url
 
 http://vybory.epicentr.net.ua/
 
