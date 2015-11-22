@@ -1,0 +1,100 @@
+<div class="container" style="padding-top: 0" ng-repeat="territory in instraction.instractions.territories">
+    <div class="row">
+
+
+<div class="col-md-12">
+    <!--<div class="col-md-5">-->
+        <!--<h4 class="text-left">Памятка для спостерігачів</h4>-->
+    <!--</div>-->
+    <!--<div class="col-md-5 col-md-offset-2">-->
+        <h4 class="text-center">Безкоштовний з мобільних та стаціонарних телефонів <strong>0-800-21-27-27</strong></h4>
+    <!--</div>-->
+</div>
+
+<div class="col-md-12">
+    <h4 class="text-center ">Дані явки виборців:</h4>
+</div>
+
+        <table class="table table-bordered" >
+            <tbody>
+            <tr>
+                <td colspan="2">Назва району</td>
+                <td class="text-right">{{territory.presence.regionName}}</td>
+            </tr>
+            <tr>
+                <td colspan="2">Номер дільниці</td>
+                <td class="text-right">{{territory.presence.districtNumber}}</td>
+            </tr>
+            <tr>
+                <td colspan="2">Місцезнаходження</td>
+                <td class="text-right">{{territory.presence.address}}</td>
+            </tr>
+            <tr ng-repeat="protocol in territory.presence.protocols">
+                <td colspan="2"  class="">{{protocol.protocolName}}</td>
+                <td  class="text-right"></td>
+            </tr>
+            <!--<tr>-->
+                <!--<td colspan="2"  class="">Загальна кількість бюлетенів Міськрада </td>-->
+                <!--<td  class="text-right">1203</td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+                <!--<td colspan="2"  class="">Загальна кількість бюлетенів Районна рада</td>-->
+                <!--<td  class="text-right">1203</td>-->
+            <!--</tr>-->
+            <tr ng-repeat="time in territory.presence.times">
+                <td style="width: 50px"><strong>{{time.time}}</strong></td>
+                <td width="500px" class="">Кількість виборців яка взяла участь у голосуванні(П.9 Протоколу)</td>
+                <td  class="text-right"></td>
+            </tr>
+            <tr>
+                <td colspan="2" class="">Загальна Кількість голосів віборців , поданих за місцеві організації політичних партій кандидатів ,<br> закріплених ними за відповідними територіальними виборчими округами(П.12 протоколу)</td>
+                <td  class="text-right"></td>
+            </tr>
+            </tbody>
+        </table>
+
+
+
+        <!--<hr style="border-color: black" />-->
+        <h3 class="text-center col-md-12" style="margin-top: 0; margin-bottom: 20px;  ">Дані протоколу:</h3>
+        <table class="table table-bordered">
+            <tbody>
+            <tr>
+                <td>Назва району</td>
+                <td class="text-right">{{territory.bulletin.regionName}}</td>
+            </tr>
+            <tr>
+                <td>Номер дільниці</td>
+                <td class="text-right">{{territory.bulletin.districtNumber}}</td>
+            </tr>
+            <tr>
+                <td>Місцезнаходження</td>
+                <td class="text-right">{{territory.bulletin.address}}</td>
+            </tr>
+            </tbody>
+        </table>
+        <table class="table table-bordered" ng-repeat="bulletin in territory.bulletin.bulletins">
+            <tbody>
+            <tr>
+                <td  class="text-center"><strong>{{bulletin.protocolName}}</strong></td>
+                <td  class="text-center"><strong>Кількість</strong></td>
+            </tr>
+            <tr ng-repeat="parti in bulletin.parties">
+                <td>{{parti.partiName}}</td>
+                <td style="width: 120px" class="text-right"></td>
+            </tr>
+            <!--<tr>-->
+                <!--<td>Назва сили (Прізвище кандидата)</td>-->
+                <!--<td class="text-right">12</td>-->
+            <!--</tr>-->
+
+            <!--<tr>-->
+                <!--<td>Назва сили (Прізвище кандидата)</td>-->
+                <!--<td class="text-right">12</td>-->
+            <!--</tr>-->
+            </tbody>
+        </table>
+        <p class="new-page"></p>
+        <!--<hr style="border: 2px solid black" class="new-page" />-->
+    </div>
+    </div>

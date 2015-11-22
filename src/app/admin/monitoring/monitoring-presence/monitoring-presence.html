@@ -1,0 +1,68 @@
+<client-navbar-monitoring></client-navbar-monitoring>
+<div class="container-fluid" id="dashboard_content">
+    <div class="row">
+        <div class="col-md-12 search_form">
+            <!--<div class="col-md-12">-->
+                <!--<client-back-btn class="pull-left"></client-back-btn>-->
+            <!--</div>-->
+            <div class="col-md-4">
+                <!--<client-back-btn style="padding-top: 20px; padding-right: 20px" class="pull-left"></client-back-btn>-->
+                <h4>Виберіть регіон:</h4>
+                <select class="form-control "  name="mySelect" id="mySelect"
+                        ng-change="presence.getSelectResoults(regionSelect.selectedOption.id)"
+                        ng-options="option.title for option in regionSelect.availableOptions track by option.id"
+                        ng-model="regionSelect.selectedOption"></select>
+            </div>
+            <div class="form-group col-md-4 pull-right " style="padding-top: 0px">
+                <h4>Пошук по номеру дільниці:</h4>
+                <input type="text" class="form-control" placeholder="Пошук" ng-model="search">
+            </div>
+        </div>
+        <div class="col-sm-12  col-md-12  main">
+            <div class="col-md-12 padding_fix">
+            <div class="table-responsive ">
+                <table  class="table table-hover table-bordered">
+                    <thead>
+                    <tr>
+                        <th rowspan="2">№ дільниці</th>
+                        <th rowspan="2">Місцезнаходження </th>
+                        <th rowspan="2">к-ть виборців </th>
+                        <th rowspan="2">к-ть проголосувавших</th>
+                        <!--<th rowspan="2" ng-repeat-start="bulletin in presence.bulletins">{{bulletin.name}}</th>-->
+
+
+                        <th colspan="2" ng-repeat="item in presence.partis">
+                            {{item.partiName}}
+                        </th>
+                    </tr>
+                    <tr>
+
+                        <!--<td >-->
+                        <!--<th ng-repeat="e  in monitoring.rows">{{e}}</th>-->
+                        <th ng-repeat-start="parti in presence.partis " >{{parti.quantityOfparticipans}}</th>
+                        <th ng-repeat-end >{{parti.percentage}}</th>
+                        <!--<th ng-repeat="parti in monitoring.partis"  >{{parti.quantityOfparticipans}}</th>-->
+                        <!--<th ng-repeat="parti in monitoring.partis ">{{parti.quantityOfparticipans}}</th>-->
+                        <!--<th ng-repeat="parti in monitoring.partis ">{{parti.percentage}}</th>-->
+                       <!--<th>{{parti.percentage}}</th>-->
+                        <!--</td>-->
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="item in presence.resoultsData | filter:search" >
+                        <td >{{item.districtId}}</td>
+                        <td >{{item.cityName}}</td>
+                        <td >{{item.districtCountOfPeople}}</td>
+                        <td >{{item.participants}}</td>
+                        <!--<td ng-repeat-end>{{bulletin.value}}</td>-->
+                            <td ng-repeat-start="e in item.partiResoults">{{e.quantityOfparticipans}}</td>
+                            <td ng-repeat-end>{{e.percentage}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+        </div >
+    </div>
+</div>
+</div>
+    </div>

@@ -1,0 +1,149 @@
+<client-navbar></client-navbar>
+
+<div class="container-fluid" id="dashboard_content">
+    <div class="row">
+        <div class="col-md-12 search_form">
+            <div class="col-md-4">
+                <!--<client-back-btn style="padding-top: 20px; padding-right: 20px" class="pull-left"></client-back-btn>-->
+                <a ng-href="#/client/regions/" type="button" style="margin-top: 20px; margin-right: 20px" class="btn btn-default pull-left" aria-label="Left Align" >
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    Назад</a>
+                <h2>Виборчі дільниці</h2>
+            </div>
+            <div class="form-group col-md-4 pull-right " style="padding-top: 20px">
+                <input type="text" class="form-control" placeholder="Пошук" ng-model="search">
+            </div>
+        </div>
+        <div class="col-sm-12  col-md-12  main">
+            <div class="col-md-12 padding_fix">
+            <div class="table-responsive ">
+                <table class="table ">
+                    <thead>
+                    <tr>
+                        <th>Номер</th>
+                        <th>Місцезнаходження</th>
+                        <th>Адреса</th>
+                        <!--<th>Імя</th>-->
+                        <!--<th>Телефон</th>-->
+                        <th> Явка</th>
+                        <th> Бюлетень</th>
+                        <!--<th> Контактні дані</th>-->
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="item in districts.districts | filter:search" >
+                        <td>{{item.districtId}}</td>
+                        <td>{{item.cityName}}</td>
+                        <td>{{item.address}}</td>
+                        <!--<td >-->
+                        <!--&lt;!&ndash;<input type="text" class="form-control" />&ndash;&gt;-->
+
+                        <!--{{item.contactPerson}}-->
+
+
+                        <!--</td>-->
+                        <!--<td >-->
+                        <!--&lt;!&ndash;<input type="text" class="form-control" ng-model="" />&ndash;&gt;-->
+
+                        <!--{{item.phoneNumber}}-->
+
+
+                        <!--</td>-->
+                        <td>         <button type="button" class="btn btn-primary" ng-click="districts.getPresence(item.districtId)">Внести явку</button>
+
+                            <!-- ng-click="open(item.districtId)"-->
+                            <!--<button type="button" class="btn btn-primary" >Внести дані</button></td>-->
+
+
+                        <td><button type="button" class="btn btn-success" ng-click="districts.getArea(item.districtId)">Внести дані</button></td>
+                        <!--<td><button type="button" class="btn btn-info" ng-click="openContactForm()">Внести дані</button>-->
+
+                    </tr>
+                    </tbody>
+                </table>
+        </div>
+    </div>
+</div>
+        <script type="text/ng-template" id="myModalContent.html" >
+            <div ng-controller="clientDistrictsController as districts">
+
+                <!--<pre>-->
+                    <!--{{districts.presence}}-->
+                    <!--{{presence}}-->
+
+
+                <!--</pre>-->
+
+
+                <pre>
+{{districts.open}}
+
+
+                </pre>
+            <div class="modal-header">
+                <h3 class="modal-title">Явка виборців</h3>
+            </div>
+            <div class="modal-body" >
+
+                <form>
+                    <div class="form-group">
+                        <label>Виберіть час</label>
+                        <select class="form-control "  name="mySelect" id="mySelect"
+                                ng-options="option.title for option in districts.presence.availableOptions track by option.id"
+                                ng-model="districts.presence.selectedTime"></select>
+                    </div>
+                    <div class="form-group">
+                        <label>Кількість виборців,які взяли учатьс у голосуванні</label>
+                        <input type="number" class="form-control" ng-model="districts.presence.voted"  placeholder="Кількість виборців,які взяли учатьс у голосуванні">
+                    </div>
+                    <div class="form-group">
+                        <label>Введіть загальну кількість виборців</label>
+                        <input type="number" class="form-control" ng-model="districts.presence.allVotes"  placeholder="Введіть загальну кількість виборців">
+                    </div>
+                    <div class="form-group">
+                        <label>Загальна кількість голосів виборців подана за політичні партії</label>
+                        <input type="number" class="form-control" ng-model="districts.presence.allVotesParties"  placeholder="Загальна кількість голосів виборців подана за політичні партії">
+                    </div>
+                    <hr/>
+
+                    <h4 class="text-center">Загальна кількість бюлетенів</h4>
+                    <div class="form-group" ng-repeat="item in districts.presence.protocols">
+                        <label>{{item.protocolName}}</label>
+                        <input type="number" class="form-control" ng-model="item.protocolCount"  placeholder="{{item.protocolName}}">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+                <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+            </div>
+            </div>
+        </script>
+
+
+        <!--<script type="text/ng-template" id="myModalContent2.html">-->
+            <!--<div class="modal-header">-->
+                <!--<h3 class="modal-title">Явка виборців</h3>-->
+            <!--</div>-->
+            <!--<div class="modal-body">-->
+
+                <!--<form>-->
+                    <!--<div class="form-group">-->
+                        <!--<label>Виберіть ім'я</label>-->
+                        <!--<input type="text" class="form-control"  placeholder="Введіть ім'я контактної особи">-->
+                    <!--</div>-->
+                    <!--<div class="form-group">-->
+                        <!--<label>Введіть телефон</label>-->
+                        <!--<input type="text" class="form-control"  placeholder="Введіть телефон">-->
+                    <!--</div>-->
+                <!--</form>-->
+            <!--</div>-->
+            <!--<div class="modal-footer">-->
+                <!--<button class="btn btn-primary" type="button" ng-click="ok()">OK</button>-->
+                <!--<button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>-->
+            <!--</div>-->
+        <!--</script>-->
+
+
+</div>
+    </div>

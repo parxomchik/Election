@@ -15,7 +15,8 @@
 @import "../material/guidelines";
 
 @import "login/login";
-@import "admin/client/client-dashboard/client-dashboard";
+//@import "admin/client/client-regions/client-dashboard";
+@import "components/client-navbar/client-navbar";
 
 
 $navbar-inverse-link-color: #5AADBB;
@@ -45,7 +46,44 @@ $icon-font-path: "../../bower_components/bootstrap-sass-official/assets/fonts/bo
   }
 }
 
+//.table > tbody > tr > td.padding_fix{
+//  padding: 0;
+//}
+.table > thead > tr > th.padding_fix,
+.table > thead > tr > td.padding_fix,
+.table > tbody > tr > th.padding_fix,
+.table > tbody > tr > td.padding_fix,
+.table > tfoot > tr > th.padding_fix,
+.table > tfoot > tr > td.padding_fix {
+  padding: 0;
 
+}
+#login_navbar {
+  color: #fff;
+}
+#login_navbar:hover {
+  color: #fff;
+}
+#logo {
+  color: #fff;
+  padding-left: 30px;
+  font-size: 2.3em;
+}
+#logo:before{
+  display: block;
+  float: left;
+  content: '';
+  background: url(../assets/images/spravu_logo.png) no-repeat;
+  width: 2.5em;
+  height: 1.5em;
+  margin-right: -0.9em;
+  margin-top: -10px;
+
+}
+
+//#client_nav {
+//  background-color: #4a0549;
+//}
 
 
 

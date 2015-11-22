@@ -6,19 +6,25 @@
     .config(routeConfig);
 
   /** @ngInject */
-  function routeConfig($stateProvider, $urlRouterProvider) {
+  function routeConfig($stateProvider, $urlRouterProvider,$logProvider) {
     $stateProvider
         .state('login', {
+        url: '',
+        templateUrl: 'app/login/login.html',
+        controller: 'loginController',
+        controllerAs: 'login'
+      })
+        .state('login2', {
         url: '/',
         templateUrl: 'app/login/login.html',
         controller: 'loginController',
         controllerAs: 'login'
       })
-        .state('dashboardEP', {
-        url: '/client/dashboard/ep',
-        templateUrl: 'app/admin/client/client-dashboard/client-dashboard.html',
-        controller: 'clientDashboardControllerEP',
-        controllerAs: 'dashboard',
+        .state('dashboard', {
+        url: '/client/regions/',
+        templateUrl: 'app/admin/client/client-regions/client-regions.html',
+        controller: 'clientRegionsController',
+        controllerAs: 'region'
           //resolve: {
           //  user: function(loginFactory) {
           //    return loginFactory.send();
@@ -26,74 +32,131 @@
           //
           //}
       })
-        .state('dashboardNL', {
-        url: '/client/dashboard/nl',
-        templateUrl: 'app/admin/client/client-dashboard/client-dashboard.html',
-        controller: 'clientDashboardControllerNl',
-        controllerAs: 'dashboard'
+        .state('districts', {
+        url: '/client/regions/:id',
+        templateUrl: 'app/admin/client/client-dashboard-districts/client-dashboard-districts.html',
+        controller: 'clientDistrictsController',
+        controllerAs: 'districts'
+          //resolve: {
+          //  user: function(loginFactory) {
+          //    return loginFactory.send();
+          //  }
+          //
+          //}
       })
-
-      .state('replicationEP', {
-        url: '/client/replication/ep',
-        templateUrl: 'app/admin/client/client-replication/client-replication.html',
-        controller: 'clientReplicationControllerEP',
-        controllerAs: 'replication'
+        .state('districtsDetails', {
+        url: '/client/regions/:regionId/districts/:id',
+        templateUrl: 'app/admin/client/client-districs-details/client-districs-details.html',
+        controller: 'clientDistrictsDetailsController',
+        controllerAs: 'districtsDetails'
+          //resolve: {
+          //  user: function(loginFactory) {
+          //    return loginFactory.send();
+          //  }
+          //
+          //}
       })
-        .state('replicationNL', {
-        url: '/client/replication/nl',
-        templateUrl: 'app/admin/client/client-replication/client-replication.html',
-        controller: 'clientReplicationControllerNL',
-        controllerAs: 'replication'
+        .state('presence', {
+        url: '/client/regions/:regionId/presence/:id',
+        templateUrl: 'app/admin/client/client-dashboard-presence/client-dashboard-presence.html',
+        controller: 'clientPresenceController',
+        controllerAs: 'presence'
+          //resolve: {
+          //  user: function(loginFactory) {
+          //    return loginFactory.send();
+          //  }
+          //
+          //}
       })
-        .state('queueEP', {
-          url: '/client/queue/ep',
-          templateUrl: 'app/admin/client/client-queue/client-queue.html',
-          controller: 'clientQueueControllerEP',
-          controllerAs: 'queue'
+        .state('monitoringDashboard', {
+        url: '/client/monitoring/',
+        templateUrl: 'app/admin/monitoring/monitoring-dashboard/monitoring-dashboard.html',
+        controller: 'monitoringDashboardController',
+        controllerAs: 'monitoring'
+          //resolve: {
+          //  user: function(loginFactory) {
+          //    return loginFactory.send();
+          //  }
+          //
+          //}
       })
-        .state('queueNL', {
-          url: '/client/queue/nl',
-          templateUrl: 'app/admin/client/client-queue/client-queue.html',
-          controller: 'clientQueueControllerNL',
-          controllerAs: 'queue'
+        .state('monitoringRegion', {
+        url: '/client/monitoring/region',
+        templateUrl: 'app/admin/monitoring/monitoring-region/monitoring-region.html',
+        controller: 'monitoringRegionController',
+        controllerAs: 'region'
+          //resolve: {
+          //  user: function(loginFactory) {
+          //    return loginFactory.send();
+          //  }
+          //
+          //}
       })
-
-
-        .state('otrsEP', {
-          url: '/client/otrs/ep',
-          templateUrl: 'app/admin/client/client-otrs/client-otrs.html',
-          controller: 'clientOtrsControllerEP',
-          controllerAs: 'otrs'
+        .state('monitoringCity', {
+        url: '/client/monitoring/city',
+        templateUrl: 'app/admin/monitoring/monitoring-city/monitoring-city.html',
+        controller: 'monitoringCityController',
+        controllerAs: 'city'
+          //resolve: {
+          //  user: function(loginFactory) {
+          //    return loginFactory.send();
+          //  }
+          //
+          //}
       })
-        .state('otrsNL', {
-          url: '/client/otrs/nl',
-          templateUrl: 'app/admin/client/client-otrs/client-otrs.html',
-          controller: 'clientOtrsControllerNL',
-          controllerAs: 'otrs'
+        .state('monitoringVillage', {
+        url: '/client/monitoring/village',
+        templateUrl: 'app/admin/monitoring/monitoring-village/monitoring-village.html',
+        controller: 'monitoringVillageController',
+        controllerAs: 'village'
+          //resolve: {
+          //  user: function(loginFactory) {
+          //    return loginFactory.send();
+          //  }
+          //
+          //}
       })
-
-
-        .state('notificationsEP', {
-          url: '/client/notifications/ep',
-          templateUrl: 'app/admin/client/client-notifications/client-notifications.html',
-          controller: 'clientNotificationsControllerEP',
-          controllerAs: 'notifications'
-
+        .state('monitoringPresence', {
+        url: '/client/monitoring/presence',
+        templateUrl: 'app/admin/monitoring/monitoring-presence/monitoring-presence.html',
+        controller: 'monitoringPresenceController',
+        controllerAs: 'presence'
+          //resolve: {
+          //  user: function(loginFactory) {
+          //    return loginFactory.send();
+          //  }
+          //
+          //}
       })
-      .state('notificationsNL', {
-          url: '/client/notifications/nl',
-          templateUrl: 'app/admin/client/client-notifications/client-notifications.html',
-          controller: 'clientNotificationsControllerNL',
-          controllerAs: 'notifications'
+        .state('instruction', {
+        url: '/client/instruction/:id',
+        templateUrl: 'app/admin/client/client-dashboard-instruction/client-dashboard-instruction.html',
+        controller: 'clientInstructionController',
+        controllerAs: 'instraction'
+          //resolve: {
+          //  user: function(loginFactory) {
+          //    return loginFactory.send();
+          //  }
+          //
+          //}
+      })
+        .state('instructionRegion', {
+        url: '/client/region_instraction',
+        templateUrl: 'app/admin/client/client-region-instruction/client-region-instruction.html',
+        controller: 'regionInstructionController',
+        controllerAs: 'instraction'
+          //resolve: {
+          //  user: function(loginFactory) {
+          //    return loginFactory.send();
+          //  }
+          //
+          //
       });
-    //  .state('brandbook', {
-    //  url: '/brandbook',
-    //  templateUrl: 'app/brandbook/brandbook.html',
-    //  controller: 'brandbookController',
-    //  controllerAs: 'brandbook'
-    //})
 
     $urlRouterProvider.otherwise('/');
+    $logProvider.debugEnabled(false);
+
+
   }
 
 })();

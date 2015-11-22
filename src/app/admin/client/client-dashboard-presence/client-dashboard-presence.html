@@ -1,0 +1,49 @@
+<client-navbar></client-navbar>
+
+<div class="container-fluid" id="dashboard_content">
+    <div class="row">
+
+        <div class="col-sm-12  col-md-12  main">
+            <div class="col-md-12 padding_fix">
+                <div class="col-md-12 padding_fix" >
+                    <client-back-btn style="padding-top: 20px; padding-right: 10px" class="pull-left"></client-back-btn>
+                    <h2>Виборча дільниця {{presence.presence.id}}</h2>
+
+                </div>
+                <form>
+                    <!--<h4 class="text-center">Загальна кількість бюлетенів</h4>-->
+                    <div class="form-group" ng-repeat="item in presence.presence.protocols">
+                        <label>Загальна кількість бюлетенів {{item.protocolName}}</label>
+                        <input type="number" class="form-control" ng-model="item.protocolCount"  placeholder="{{item.protocolName}}">
+                    </div>
+
+                    <h3>Явка погодинно </h3>
+                    <div class="form-group">
+                        <label>Виберіть час</label>
+                        <select class="form-control "  name="mySelect" id="mySelect"
+                                ng-options="option.title for option in presence.presence.availableOptions track by option.id"
+                                ng-model="presence.presence.selectedTime"></select>
+                    </div>
+                    <div class="form-group">
+                        <label>Кількість виборців,які взяли участь у голосуванні <strong>на вибраний час</strong></label>
+                        <input type="number" class="form-control" ng-model="presence.presence.voted"  placeholder="Кількість виборців,які взяли учатьс у голосуванні">
+                    </div>
+                    <div class="form-group">
+                        <label>Введіть кількість зареэстрованих виборців</label>
+                        <input type="number" class="form-control" ng-model="presence.presence.allVotes"  placeholder="Введіть загальну кількість виборців">
+                    </div>
+                    <div class="form-group" >
+                        <label>Загальна кількість голосів виборців подана за політичні партії(П.12) дані на 20:00</label>
+                        <input type="number" class="form-control" ng-model="presence.presence.allVotesParties"  placeholder="Загальна кількість голосів виборців подана за політичні партії" disabled>
+                    </div>
+                    <hr/>
+                </form>
+
+
+                <!--<button type="button" class="btn btn-success  col-sm-4 col-sm-offset-4" ng-click="districtsDetails.saveDistrict()">Зберегти</button>-->
+                <button type="button" class="btn btn-success  col-sm-4 col-sm-offset-4" ng-click="presence.savePresence()">Зберегти</button>
+
+            </div>
+        </div>
+    </div>
+</div>

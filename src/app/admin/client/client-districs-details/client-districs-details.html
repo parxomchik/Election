@@ -1,0 +1,52 @@
+<client-navbar></client-navbar>
+
+<div class="container-fluid" id="dashboard_content">
+    <div class="row">
+
+        <div class="col-sm-12  col-md-12  main">
+            <div class="col-md-12 padding_fix">
+                <div class="col-md-12">
+                <client-back-btn class="pull-left" style="padding-right: 20px; padding-top: 5px"></client-back-btn>
+                    <h4>Дільниця № {{districtsDetails.areas.districtId}}</h4>
+                </div>
+                <button type="button" class="btn btn-success  col-sm-4 col-sm-offset-4" ng-click="districtsDetails.saveDistrict2()">Зберегти</button>
+
+                <div class="table-responsive col-sm-6" ng-repeat="item in districtsDetails.areas">
+                    <h3>{{item.name}}</h3>
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                        <tr>
+                            <th>Название партии</th>
+                            <th>Количество проголосовавших</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="parti in item.parties ">
+                            <td>{{parti.partiName}}</td>
+                            <td class="padding_fix"><input type="number" class="form-control" ng-model="parti.votes" /></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <hr/>
+                </div>
+
+                <!--<button type="button" class="btn btn-success  col-sm-4 col-sm-offset-4" ng-click="districtsDetails.saveDistrict()">Зберегти</button>-->
+                <button type="button" class="btn btn-success  col-sm-4 col-sm-offset-4" ng-click="districtsDetails.saveDistrict2()">Зберегти</button>
+
+    </div>
+</div>
+</div>
+    </div>
+
+<script type="text/ng-template" id="myModalContent2.html">
+    <div class="modal-header">
+    <h3 class="modal-title text-center">Результати виборів на дільниці</h3>
+    </div>
+<div class="modal-body">
+    <h1 class="text-center">Збережено</h1>
+
+</div>
+<div class="modal-footer">
+<button class="btn btn-primary center-block btn-lg" type="button" ng-click="ok()">OK</button>
+</div>
+</script>

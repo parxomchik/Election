@@ -1,0 +1,41 @@
+<div class="container" style="padding-top: 0">
+    <div class="row">
+        <div class="col-md-12">
+            <h4 class="text-center">Для друку інструкцій натисніть на посилання в таблиці</h4>
+        </div>
+        <table class="table table-bordered" >
+            <thead>
+            <tr>
+                <th>№</th>
+                <th>Назва району</th>
+                <th>Посилання на інструкцію</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr  ng-repeat="region in instraction.regions">
+                <td>{{region.id}}</td>
+                <td >{{region.regionName}}</td>
+                <td ><a ng-href="{{region.regionUrl}}">{{region.regionUrl}}</a></td>
+            </tr>
+        </table>
+
+        <hr/>
+
+        <h4 class="text-center">Після переходу по посиланню ви побачите ваші інструкції(фото нижче)</h4>
+        <hr/>
+
+        <img width="900" class="center-block" src="./assets/images/instraction/instraction1.png" alt=""/>
+
+
+
+        <hr/>
+        <h4 class="text-center">Для друку інструкції необхідно натиcнути комбінацію клавіш вказаних на малюнку нижче</h4>
+        <hr/>
+
+        <img class="center-block" width="800" src="./assets/images/instraction/windows.jpg" alt=""/>
+
+
+
+
+    </div>
+</div>

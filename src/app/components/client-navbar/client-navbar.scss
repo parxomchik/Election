@@ -15,19 +15,28 @@
 #login_navbar:hover {
   color: #fff;
 }
-#logo {
-  color: #fff;
-  padding-left: 30px;
-  font-size: 2.3em;
-}
-#logo:before{
-  display: block;
-  float: left;
-  content: '';
-  background: url(../assets/images/login/client_logo.png) no-repeat;
-  width: 2.5em;
-  height: 1.5em;
-  margin-right: -0.9em;
-  margin-top: -10px;
+//#logo {
+//  color: #fff;
+//  padding-left: 30px;
+//  font-size: 2.3em;
+//}
+//#logo:before{
+//  display: block;
+//  float: left;
+//  content: '';
+//  background: url(../assets/images/spravu_logo.png) no-repeat;
+//  width: 7em;
+//  height: 2em;
+//  margin-right: -0.9em;
+//  margin-top: -10px;
+//
+//}
 
+.navbar-brand {
+  padding-top: 5px;
+  height: 60px;
+}
+
+#client_nav {
+  background-color: #4a0549;
 }

@@ -1,0 +1,43 @@
+<client-navbar></client-navbar>
+
+<div class="container-fluid" id="dashboard_content">
+    <div class="row">
+        <div class="col-md-12 search_form">
+        <div class="col-md-4">
+        <h3 style="padding-top: 5px">Райони Хмельницької області</h3>
+        </div>
+        <div class="form-group col-md-4 pull-right " style="padding-top: 20px">
+        <input type="text" class="form-control" placeholder="Пошук" ng-model="search">
+        </div>
+        </div>
+        <div class="col-sm-12  col-md-12  main">
+
+            <div class="table-responsive ">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <!--<th>Порядковий номер</th>-->
+                        <th>Назва району</th>
+                        <th>Загальна кількість дільниць</th>
+                        <th>Маленькі дільниці</th>
+                        <th>Середні дільниці</th>
+                        <th>Великі дільниці</th>
+                        <th>Кількість виборців</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="item in region.regions | filter:search" ng-click="region.getDistrict(item.id)  ">
+                        <!--<td>{{region.id}}</td>-->
+                        <td>{{item.regionName}}</td>
+                        <td>{{item.allDistricts}}</td>
+                        <td>{{item.smallDistricts}}</td>
+                        <td>{{item.middleDistricts}}</td>
+                        <td>{{item.bigDistricts}}</td>
+                        <td>{{item.countOfPeople}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+        </div>
+        </div>
+</div>
+    </div>

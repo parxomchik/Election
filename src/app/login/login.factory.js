@@ -6,28 +6,21 @@
         .factory('loginFactory', loginFactory);
 
     /** @ngInject */
-    function loginFactory($http,$cookies){
+    function loginFactory($http,$cookies,restConfig){
         return {
             sendLogin: function (data) {
                 return $http({
                     method: 'POST',
-                    url: 'http://wall.epicentr.com:8081/api/login',
+                    url: restConfig.url+'/api/login',
+                    //url: 'http://80.91.174.154:8081/api/login',
                     data: $.param({
-                        email:  data.email,
-                        password:  data.password,
+                        username:  data.username,
+                        password:  data.password
                     }),
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                 })
-            },
-            sendDashboard: function (data) {
-                return $http({
-                    method: 'POST',
-                    url: 'http://wall.epicentr.com:8081/api/dashboard',
-                    data: $.param({
-                        session_id: $cookies.getObject('session_id')
-                    }),
-                    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-                })
+
+
             }
         };
     }
